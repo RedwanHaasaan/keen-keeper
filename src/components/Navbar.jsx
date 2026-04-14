@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { NavLink,Link } from "react-router-dom";
 import Logo from "./../assets/logo.png";
 import { ChartLine, Clock, House } from "lucide-react";
 const Navbar = () => {
@@ -12,25 +12,25 @@ const Navbar = () => {
       <div className="hidden md:flex">
         <ul className="menu menu-horizontal gap-2 px-1">
           <li>
-            <Link
+            <NavLink
               to="/"
-              className="flex flex-row items-center gap-2 bg-green text-white"
+              className={({isActive})=>`flex flex-row items-center gap-2 ${isActive ? 'bg-green text-white' : ''}` }
             >
               <House className="w-4" />
               Home
-            </Link>
+            </NavLink>
           </li>
           <li>
-            <Link to="/timeline" className="flex flex-row items-center gap-2">
+            <NavLink to="/timeline" className={({isActive})=>`flex flex-row items-center gap-2 ${isActive ? 'bg-green text-white' : ''}` }>
               <Clock className="w-4" />
               Timeline
-            </Link>
+            </NavLink>
           </li>
           <li>
-            <Link to="/stats" className="flex flex-row items-center gap-2">
+            <NavLink to="/stats" className={({isActive})=>`flex flex-row items-center gap-2 ${isActive ? 'bg-green text-white' : ''}` }>
               <ChartLine className="w-4" />
               Stats
-            </Link>
+            </NavLink>
           </li>
         </ul>
       </div>
@@ -58,25 +58,25 @@ const Navbar = () => {
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
           >
             <li>
-              <Link
+              <NavLink
                 to="/"
-                className="flex flex-row items-center gap-2 bg-green text-white"
+                className={({isActive})=>`flex flex-row items-center gap-2 ${isActive ? 'bg-green text-white' : ''}` }
               >
                 <House className="w-4" />
                 Home
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link to="/timeline" className="flex flex-row items-center gap-2">
+              <NavLink to="/timeline" className={({isActive})=>`flex flex-row items-center gap-2 ${isActive ? 'bg-green text-white' : ''}` }>
                 <Clock className="w-4" />
                 Timeline
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link to="/stats" className="flex flex-row items-center gap-2">
+              <NavLink to="/stats" className={({isActive})=>`flex flex-row items-center gap-2 ${isActive ? 'bg-green text-white' : ''}` }>
                 <ChartLine className="w-4" />
                 Stats
-              </Link>
+              </NavLink>
             </li>
           </ul>
         </div>
