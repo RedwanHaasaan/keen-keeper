@@ -1,2 +1,11 @@
 @import "tailwindcss";
 @plugin "daisyui";
+
+@layer utilities{
+    .bg-green{
+        background-color: #244D3F;
+    }
+    .text-green{
+        color: #244D3F;
+    }
+}
