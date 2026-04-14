@@ -1,10 +1,11 @@
-import React from 'react';
-import Navbar from '../components/Navbar';
+import Hero from '../components/Hero';
 
 const Home = () => {
     return (
         <div>
-            <h1>Home Page</h1>
+            <div className='py-4 px-1 lg:pt-20'>
+                <Hero/>
+            </div>
         </div>
     );
 };

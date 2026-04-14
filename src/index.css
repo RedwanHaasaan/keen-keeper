@@ -1,11 +1,24 @@
 @import "tailwindcss";
 @plugin "daisyui";
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap');
 
+@layer base {
+    body{
+        font-family: 'Geist', sans-serif;
+        background-color: #F8FAFC;
+    }
+    html{
+        scroll-behavior: smooth;
+    }
+}
 @layer utilities{
     .bg-green{
         background-color: #244D3F;
     }
     .text-green{
         color: #244D3F;
+    }
+    .text-neavy{
+        color: #1F2937;
     }
 }
