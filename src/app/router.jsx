@@ -3,26 +3,31 @@ import Home from "../Pages/Home";
 import MainLayout from "../layout/MainLayout";
 import Timeline from "../Pages/Timeline";
 import Stats from "../Pages/Stats";
+import ErrorPage from "../Pages/ErrorPage";
 
 const router = createBrowserRouter([
-    {
-        path: "/",
-        element: <MainLayout/>,
-        children:[
-            {
-                index: true,
-                element: <Home/>
-            },
-            {
-                path: "timeline",
-                element: <Timeline/>
-            },
-            {
-                path: "stats",
-                element:<Stats/>
-            }
-        ]
-    }
-])
+  {
+    path: "/",
+    element: <MainLayout />,
+    children: [
+      {
+        index: true,
+        element: <Home />,
+      },
+      {
+        path: "timeline",
+        element: <Timeline />,
+      },
+      {
+        path: "stats",
+        element: <Stats />,
+      },
+    ],
+  },
+  {
+    path: "*",
+    element: <ErrorPage />,
+  },
+]);
 
 export default router;
