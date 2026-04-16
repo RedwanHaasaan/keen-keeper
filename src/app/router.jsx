@@ -4,6 +4,7 @@ import MainLayout from "../layout/MainLayout";
 import Timeline from "../Pages/Timeline";
 import Stats from "../Pages/Stats";
 import ErrorPage from "../Pages/ErrorPage";
+import FriendDetails from "../components/ui/FriendDetails";
 
 const router = createBrowserRouter([
   {
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
       {
         path: "stats",
         element: <Stats />,
+      },
+      {
+        path: "friendDetails/:friendId",
+        element: <FriendDetails />,
       },
     ],
   },
