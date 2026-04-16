@@ -21,9 +21,16 @@ const KeeperContaxtProvider = ({children}) => {
         needAttention: friends.filter(friend => friend.status === "overdue").length,
         interactionsThisMonth: 12,    
     }
+  //Friends data
+  const friendsDetails =(friendId) => {
+    return friends.find(friend => friend.id === friendId);
+  }
 
-  console.log(friends);
-    const keeperData = {friends,stats};
+  const keeperData = {
+    friends,
+    stats,
+    friendsDetails
+  };
   return (
     <KeeperContext.Provider value={keeperData}>
         {children}
