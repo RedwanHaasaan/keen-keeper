@@ -79,7 +79,7 @@ const KeeperContaxtProvider = ({children}) => {
     handleDeleteTimelineEntry,
     setFilterType,
     fillterdTimeline,
-    chartData
+    chartData,
   };
   return (
     <KeeperContext.Provider value={keeperData}>

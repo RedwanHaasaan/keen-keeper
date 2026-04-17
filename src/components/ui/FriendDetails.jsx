@@ -10,7 +10,7 @@ import useKeeper from "../../hooks/useKeeperCtx";
 import { useParams } from "react-router-dom";
 
 const FriendDetails = () => {
-  const { friendsDetails,handleAction } = useKeeper();
+  const { friendsDetails,handleAction} = useKeeper();
   const friendID = Number(useParams().friendId);
   const friend = friendsDetails(friendID);
 
