@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 import { KeeperContext } from './KeeperContext';
 const KeeperContaxtProvider = ({children}) => {
 
@@ -6,6 +7,8 @@ const KeeperContaxtProvider = ({children}) => {
   const [timeline,setTimeline] = useState([]);
   const [filterType, setFilterType] = useState("all");
   const [loading, setLoading] = useState(true);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [sortOrder, setSortOrder] = useState("newest");
 
   //fetching data from json file
   useEffect(()=>{
@@ -51,16 +54,67 @@ const KeeperContaxtProvider = ({children}) => {
       }),
       };
       setTimeline(prevTimeline => [...prevTimeline, newTimelineEntry]);
+      
+      // Toast notification based on action type
+      const actionMessages = {
+        text: `Texted ${friendToBeAdded.name}!`,
+        call: `Called ${friendToBeAdded.name}!`,
+        video: `Video called ${friendToBeAdded.name}!`,
+      };
+      
+      toast.success(actionMessages[actionType] || "Action recorded!", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+      });
     }
   }
 
   //handle delete timeline entry
   const handleDeleteTimelineEntry = (entryId) => {
     setTimeline(prevTimeline => prevTimeline.filter(entry => entry.id !== entryId));
+    
+    // Toast notification for deletion
+    toast.info("Timeline entry removed", {
+      position: "top-right",
+      autoClose: 2500,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+    });
   }
 
   //filter timeline based on action type
   const fillterdTimeline = filterType === "all" ? timeline : timeline.filter(entry => entry.action === filterType);
+
+  //search timeline by friend name or action type
+  const searchTimeline = (entries) => {
+    if (!searchQuery.trim()) return entries;
+    
+    const query = searchQuery.toLowerCase();
+    return entries.filter(entry => 
+      entry.friendName.toLowerCase().includes(query) || 
+      entry.action.toLowerCase().includes(query)
+    );
+  };
+
+  //sort timeline entries by date
+  const sortTimeline = (entries) => {
+    const sorted = [...entries];
+    if (sortOrder === "newest") {
+      sorted.sort((a, b) => b.id - a.id); // Newest first
+    } else {
+      sorted.sort((a, b) => a.id - b.id); // Oldest first
+    }
+    return sorted;
+  };
+
+  //process timeline: filter -> search -> sort
+  const processedTimeline = sortTimeline(searchTimeline(fillterdTimeline));
 
   //chart data
   const chartData = [
@@ -88,6 +142,11 @@ const KeeperContaxtProvider = ({children}) => {
     handleDeleteTimelineEntry,
     setFilterType,
     fillterdTimeline,
+    searchQuery,
+    setSearchQuery,
+    sortOrder,
+    setSortOrder,
+    processedTimeline,
     chartData,
   };
   return (
