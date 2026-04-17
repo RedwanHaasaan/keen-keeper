@@ -54,6 +54,22 @@ const KeeperContaxtProvider = ({children}) => {
   //filter timeline based on action type
   const fillterdTimeline = filterType === "all" ? timeline : timeline.filter(entry => entry.action === filterType);
 
+  //chart data
+  const chartData = [
+  {
+    name: "Text",
+    value: timeline.filter(item => item.action === "text").length,
+  },
+  {
+    name: "Call",
+    value: timeline.filter(item => item.action === "call").length,
+  },
+  {
+    name: "Video",
+    value: timeline.filter(item => item.action === "video").length,
+  },
+];
+
   //Data to be provided in context
   const keeperData = {
     friends,
@@ -63,6 +79,7 @@ const KeeperContaxtProvider = ({children}) => {
     handleDeleteTimelineEntry,
     setFilterType,
     fillterdTimeline,
+    chartData
   };
   return (
     <KeeperContext.Provider value={keeperData}>
