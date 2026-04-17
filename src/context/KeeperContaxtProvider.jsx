@@ -15,7 +15,7 @@ const KeeperContaxtProvider = ({children}) => {
     const fetchData =async() =>{
         try {
           setLoading(true);
-          const data = await fetch("http://localhost:5173/friends.json");
+          const data = await fetch("https://keen-keeper-zeta-red.vercel.app/friends.json");
           const result = await data.json();
           setFriends(result);
         } catch (error) {
