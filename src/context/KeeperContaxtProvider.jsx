@@ -5,13 +5,21 @@ const KeeperContaxtProvider = ({children}) => {
   const [friends,setFriends] = useState([]);
   const [timeline,setTimeline] = useState([]);
   const [filterType, setFilterType] = useState("all");
+  const [loading, setLoading] = useState(true);
 
   //fetching data from json file
   useEffect(()=>{
     const fetchData =async() =>{
-        const data = await fetch("http://localhost:5173/friends.json");
-        const result = await data.json();
-        setFriends(result)
+        try {
+          setLoading(true);
+          const data = await fetch("http://localhost:5173/friends.json");
+          const result = await data.json();
+          setFriends(result);
+        } catch (error) {
+          console.error("Error fetching friends:", error);
+        } finally {
+          setLoading(false);
+        }
     };
     fetchData();
   },[])
@@ -73,6 +81,7 @@ const KeeperContaxtProvider = ({children}) => {
   //Data to be provided in context
   const keeperData = {
     friends,
+    loading,
     stats,
     friendsDetails,
     handleAction,
