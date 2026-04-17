@@ -10,7 +10,7 @@ import useKeeper from "../../hooks/useKeeperCtx";
 import { useParams } from "react-router-dom";
 
 const FriendDetails = () => {
-  const { friendsDetails } = useKeeper();
+  const { friendsDetails,handleAction } = useKeeper();
   const friendID = Number(useParams().friendId);
   const friend = friendsDetails(friendID);
 
@@ -120,17 +120,17 @@ const FriendDetails = () => {
             <h3 className="font-medium mb-4 text-green">Quick Check-In</h3>
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-              <button className="bg-gray-100 hover:bg-gray-200 rounded-xl h-32 md:h-36 lg:h-32 flex flex-col items-center justify-center gap-2 cursor-pointer transition">
+              <button onClick={()=>handleAction(friendID, "call")} className="bg-gray-100 hover:bg-gray-200 rounded-xl h-32 md:h-36 lg:h-32 flex flex-col items-center justify-center gap-2 cursor-pointer transition">
                 <PhoneCall size={22} />
                 <span className="text-sm">Call</span>
               </button>
 
-              <button className="bg-gray-100 hover:bg-gray-200 rounded-xl h-32 md:h-36 lg:h-32  flex flex-col items-center justify-center gap-2 cursor-pointer transition">
+              <button onClick={()=>handleAction(friendID, "text")}  className="bg-gray-100 hover:bg-gray-200 rounded-xl h-32 md:h-36 lg:h-32  flex flex-col items-center justify-center gap-2 cursor-pointer transition">
                 <MessageSquareMore size={22} />
                 <span className="text-sm">Text</span>
               </button>
 
-              <button className="bg-gray-100 hover:bg-gray-200 rounded-xl h-32 md:h-36 lg:h-32 flex flex-col items-center justify-center gap-2 cursor-pointer transition">
+              <button onClick={()=>handleAction(friendID, "video")} className="bg-gray-100 hover:bg-gray-200 rounded-xl h-32 md:h-36 lg:h-32 flex flex-col items-center justify-center gap-2 cursor-pointer transition">
                 <Video size={22} />
                 <span className="text-sm">Video</span>
               </button>

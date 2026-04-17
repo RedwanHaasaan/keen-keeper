@@ -3,6 +3,8 @@ import { KeeperContext } from './KeeperContext';
 const KeeperContaxtProvider = ({children}) => {
 
   const [friends,setFriends] = useState([]);
+  const [timeline,setTimeline] = useState([]);
+  const [filterType, setFilterType] = useState("all");
 
   //fetching data from json file
   useEffect(()=>{
@@ -26,10 +28,41 @@ const KeeperContaxtProvider = ({children}) => {
     return friends.find(friend => friend.id === friendId);
   }
 
+  //Action handler
+  const handleAction = (friendId, actionType)=>{
+    const friendToBeAdded = friends.find(friend => friend.id === friendId);
+    if(friendToBeAdded){
+      const newTimelineEntry = {
+        id: Date.now(),
+        action: actionType,
+        friendName: friendToBeAdded.name,
+        date: new Date().toLocaleDateString("en-US", {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+      }),
+      };
+      setTimeline(prevTimeline => [...prevTimeline, newTimelineEntry]);
+    }
+  }
+
+  //handle delete timeline entry
+  const handleDeleteTimelineEntry = (entryId) => {
+    setTimeline(prevTimeline => prevTimeline.filter(entry => entry.id !== entryId));
+  }
+
+  //filter timeline based on action type
+  const fillterdTimeline = filterType === "all" ? timeline : timeline.filter(entry => entry.action === filterType);
+
+  //Data to be provided in context
   const keeperData = {
     friends,
     stats,
-    friendsDetails
+    friendsDetails,
+    handleAction,
+    handleDeleteTimelineEntry,
+    setFilterType,
+    fillterdTimeline,
   };
   return (
     <KeeperContext.Provider value={keeperData}>
