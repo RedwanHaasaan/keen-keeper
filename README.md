@@ -4,10 +4,14 @@
 
 Never lose touch with your friends. Keen Keeper helps you maintain meaningful relationships by tracking your connections and reminding you when it's time to reach out.
 
+🌐 **[Live Demo](https://keen-keeper-zeta-red.vercel.app/)** - Try it now!
+
 ---
 
 ## 📋 Table of Contents
 
+- [Live Demo](#live-demo)
+- [GitHub Repository](#github-repository)
 - [About](#about)
 - [Features](#features)
 - [Tech Stack](#tech-stack)
@@ -18,7 +22,21 @@ Never lose touch with your friends. Keen Keeper helps you maintain meaningful re
 
 ---
 
-## 🎯 About
+## � Live Demo
+
+🚀 **[Visit Live Application](https://keen-keeper-zeta-red.vercel.app/)**
+
+Experience Keen Keeper in action! Manage your friendships, track interactions, and never lose touch with people who matter.
+
+---
+## 💻 GitHub Repository
+
+📚 **[View on GitHub](https://github.com/RedwanHaasaan/keen-keeper.git)**
+
+Fork, clone, and contribute to the project!
+
+---
+## �🎯 About
 
 Keen Keeper is a web application designed to help you maintain and nurture your friendships. In our busy lives, it's easy to lose track of people who matter to us. Keen Keeper solves this by providing an intuitive platform to:
 
@@ -60,6 +78,21 @@ Keen Keeper is a web application designed to help you maintain and nurture your 
   - Tags and categories for better organization
   - Quick access to contact information
 
+- **Timeline Management**
+  - 🔍 Advanced search by friend name or interaction type
+  - 📅 Sort timeline entries by date (newest/oldest)
+  - 🎯 Filter interactions by type (text, call, video)
+  - ⏱️ Track interaction timestamps
+
+- **User Notifications**
+  - 🔔 Toast notifications for action confirmations
+  - ✅ Feedback when recording interactions
+  - ℹ️ Info notifications for timeline updates
+
+- **Loading States**
+  - ⏳ Smooth loading spinner while fetching friends
+  - Better user experience during data loading
+
 - **Responsive Design**
   - Mobile-friendly interface
   - Works seamlessly on desktop, tablet, and mobile devices
@@ -81,6 +114,7 @@ Keen Keeper is a web application designed to help you maintain and nurture your 
 **Development Tools:**
 - **ESLint** (v9.39.4) - Code quality and style checking
 - **Vite Plugin React** - React Fast Refresh for hot module reloading
+- **React Toastify** (v10+) - Toast notification system
 
 ---
 
@@ -93,9 +127,10 @@ Keen Keeper is a web application designed to help you maintain and nurture your 
 
 ### Installation
 
-1. **Clone or download the project**
+1. **Clone the repository**
    ```bash
-   cd "Programming Hero Course/Assignment 7/Keen-Keeper"
+   git clone https://github.com/RedwanHaasaan/keen-keeper.git
+   cd keen-keeper
    ```
 
 2. **Install dependencies**
@@ -110,6 +145,12 @@ Keen Keeper is a web application designed to help you maintain and nurture your 
 
 4. **Open your browser**
    - Navigate to `http://localhost:5173` (or the URL shown in your terminal)
+
+5. **Build for production (optional)**
+   ```bash
+   npm run build
+   npm run preview
+   ```
 
 ---
 
@@ -223,6 +264,18 @@ Runs ESLint to check code quality and enforce coding standards.
 ## 📝 License
 
 This project is part of the Programming Hero Course - Assignment 7.
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! To contribute:
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
 ---
 
